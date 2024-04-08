@@ -7,7 +7,7 @@ const cors = require("cors");
 dotenv.config()
 
 app.use(cors({
-    origin: "*"
+    origin: '*'
 }));
 
 const userRoute = require('./routes/user');
