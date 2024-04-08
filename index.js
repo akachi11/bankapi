@@ -27,6 +27,6 @@ app.use(express.json());
 app.use('/api/users', userRoute)
 app.use('/api/auth', authRoute)
 
-app.listen(5000, () => {
+app.listen(() => {
     console.log("Backend is running")
 })
