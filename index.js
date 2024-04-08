@@ -6,13 +6,11 @@ const cors = require("cors");
 
 dotenv.config()
 
-const corsOptions = {
-    origin: '*',
-    credentials: true,            //access-control-allow-credentials:true
-    optionSuccessStatus: 200,
-}
-
-app.use(cors(corsOptions))
+app.use(cors({
+    origin: "https://bankapi-1.onrender.com",
+    headers: ["Content-Type"],
+    credentials: true,
+}));
 
 const userRoute = require('./routes/user');
 const authRoute = require('./routes/auth');
