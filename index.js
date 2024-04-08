@@ -7,9 +7,7 @@ const cors = require("cors");
 dotenv.config()
 
 app.use(cors({
-    origin: "https://bankapi-1.onrender.com",
-    headers: ["Content-Type"],
-    credentials: true,
+    origin: "*"
 }));
 
 const userRoute = require('./routes/user');
