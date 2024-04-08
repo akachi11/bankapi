@@ -7,7 +7,7 @@ const cors = require("cors");
 dotenv.config()
 
 app.use(cors({
-    origin: 'https://bankapi-1.onrender.com/api/auth/register'
+    origin: '*'
 }));
 
 const userRoute = require('./routes/user');
@@ -27,6 +27,6 @@ app.use(express.json());
 app.use('/api/users', userRoute)
 app.use('/api/auth', authRoute)
 
-app.listen(() => {
+app.listen(5000, () => {
     console.log("Backend is running")
 })
