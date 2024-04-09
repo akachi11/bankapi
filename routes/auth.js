@@ -9,7 +9,7 @@ router.post("/register", async (req, res) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         phone: "0" + req.body.phone,
-        accountNumber: req.body.phone.slice(1),
+        accountNumber: req.body.phone,
         email: req.body.email,
         password: Cryptojs.AES.encrypt(
             req.body.password,
@@ -29,7 +29,15 @@ router.post("/register", async (req, res) => {
                 return
             } else {
                 const savedUser = await newUser.save();
-                res.status(201).json(savedUser)
+                const accessToken = jwt.sign(
+                    { id: savedUser._id },
+                    process.env.JWT_SEC,
+                    { expiresIn: "3d" }
+                )
+        
+                const { password, ...others } = savedUser._doc
+        
+                res.status(200).json({ ...others, accessToken })
             }
 
     } catch (error) {
